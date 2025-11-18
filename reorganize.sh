@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # CS336-assignment1 一键整理脚本
 # 用法：bash reorganize.sh
 set -euo pipefail
