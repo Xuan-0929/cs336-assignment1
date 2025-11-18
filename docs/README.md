@@ -1,6 +1,6 @@
 # BPE分词器项目
 
-这是一个基于字节对编码（Byte Pair Encoding, BPE）的分词器实现项目，将Jupyter Notebook中的多个功能模块拆分为独立的Python文件，提供更清晰的项目结构和更好的可维护性。
+这是一个基于字节对编码（Byte Pair Encoding, BPE）的分词器实现项目，完成了斯坦福大学cs336课程的Assignment1中的绝大部分任务，使用偏底层的方式手动实现了多种功能与BPE分词器。
 
 ## 项目结构
 
