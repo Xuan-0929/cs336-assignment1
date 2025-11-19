@@ -1,6 +1,6 @@
 # BPE Tokenizer Project
 
-A comprehensive Byte Pair Encoding (BPE) tokenizer implementation that demonstrates Unicode processing, UTF-8 encoding analysis, and parallel BPE training for natural language processing tasks.
+This is a project implementing a Byte Pair Encoding (BPE) tokenizer. It completes the majority of the tasks in Assignment 1 of Stanford University's cs336 course, manually implementing various functions and the BPE tokenizer in a relatively low-level manner.
 
 ## 🌟 Features
 
