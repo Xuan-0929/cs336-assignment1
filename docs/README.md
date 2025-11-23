@@ -73,6 +73,9 @@ python main.py create-data --size large -o big_data.txt
 
 # Test deep learning optimizers
 python main.py test-dl
+
+# Tokenize a file with the BPE tokenizer
+python scripts/tokenize_file.py -i input_file.txt -l 10 -f both
 ```
 
 ### Programming Interface
@@ -130,6 +133,13 @@ optimizer = AdamW(model.parameters(), lr=1e-3, weight_decay=0.01)
 - `--merges-output`: Merge rules output file
 - `--special-tokens`: Additional special tokens (comma-separated)
 - `-p, --num-processes`: Number of processes (default: auto-detect)
+
+### File Tokenization Command
+- `-i, --input`: Input file path (required)
+- `-l, --lines`: Number of lines to process (default: all lines)
+- `-f, --format`: Output format (tokens, text, both) (default: tokens)
+- `--vocab`: Custom vocabulary file path (default: vocab.json)
+- `--merges`: Custom merges file path (default: merges.txt)
 
 ### Deep Learning Optimizers
 - `test-dl`: Test all deep learning optimizers including cross-entropy loss, gradient clipping, SGD, and AdamW

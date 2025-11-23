@@ -259,9 +259,6 @@ def create_sample_training_data():
 
 def test_bpe_tokenizer():
     """测试BPE分词器 / Test BPE tokenizer"""
-    print("=== 测试BPE分词器 ===")
-    print("=== Testing BPE Tokenizer ===")
-    
     # 创建示例数据 / Create sample data
     train_file = create_sample_training_data()
     
@@ -282,13 +279,6 @@ def test_bpe_tokenizer():
     print(f"Vocabulary size: {len(tokenizer.vocab)}")
     print(f"合并操作数量: {len(tokenizer.merges)}")
     print(f"Number of merge operations: {len(tokenizer.merges)}")
-    
-    # 显示前20个词汇项 / Display first 20 vocabulary items
-    print("\n前20个词汇项:")
-    print("First 20 vocabulary items:")
-    for i, (token_id, token_bytes) in enumerate(list(tokenizer.vocab.items())[:20]):
-        token_str = token_bytes.decode('utf-8', errors='replace')
-        print(f"ID {token_id}: {repr(token_str)}")
     
     # 测试编码解码 / Test encoding and decoding
     test_text = "Hello world!"

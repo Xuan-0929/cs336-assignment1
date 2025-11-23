@@ -104,6 +104,18 @@ python main.py create-data --size medium -o demo.txt
 python main.py create-data --size large --parallel -o big_data.txt
 ```
 
+#### 7. 使用分词器处理文件
+```bash
+# 处理文件的前10行，同时显示token ID和文本
+python scripts/tokenize_file.py -i input_file.txt -l 10 -f both
+
+# 处理整个文件，仅显示token ID
+python scripts/tokenize_file.py -i input_file.txt
+
+# 指定自定义词汇表和合并规则文件
+python scripts/tokenize_file.py -i input_file.txt --vocab my_vocab.json --merges my_merges.txt
+```
+
 ## 命令行参数
 
 ### 全局参数
@@ -117,6 +129,13 @@ python main.py create-data --size large --parallel -o big_data.txt
 - `--merges-output`: 合并规则输出文件
 - `--special-tokens`: 额外特殊token (逗号分隔)
 - `-p, --num-processes`: 进程数 (默认: 自动检测)
+
+### 文件分词命令参数
+- `-i, --input`: 输入文件路径 (必需)
+- `-l, --lines`: 要处理的行数 (默认: 所有行)
+- `-f, --format`: 输出格式 (tokens, text, both) (默认: tokens)
+- `--vocab`: 自定义词汇表文件路径 (默认: vocab.json)
+- `--merges`: 自定义合并规则文件路径 (默认: merges.txt)
 
 ## 技术细节
 

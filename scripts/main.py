@@ -12,7 +12,14 @@ import os
 from typing import List
 
 # 导入各个模块 / Import all modules
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# 获取项目根目录 / Get project root directory
+project_root = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+sys.path.insert(0, project_root)
+sys.path.insert(0, os.path.join(project_root, 'src'))
+sys.path.insert(0, os.path.join(project_root, 'src', 'tokenizers'))
+sys.path.insert(0, os.path.join(project_root, 'src', 'encoders'))
+sys.path.insert(0, os.path.join(project_root, 'src', 'optimizers'))
+sys.path.insert(0, os.path.join(project_root, 'docs'))
 
 from unicode_demo import demo_unicode_characters, analyze_unicode_encoding
 from utf8_encoding import (
@@ -133,27 +140,32 @@ def test_tokenizer(args):
     
     tokenizer = test_bpe_tokenizer()
     
-    # 交互式测试 / Interactive testing
-    while True:
-        text = input("\n输入要编码的文本 (输入 'quit' 退出): ").strip()
-        print("\nEnter text to encode (type 'quit' to exit): ").strip()
-        if text.lower() in ['quit', 'exit', 'q']:
-            break
+    # 使用固定文本进行一次性测试 / Use fixed text for one-time testing
+    text = "Hello world! 这是一个测试文本。"
+    print(f"\n测试文本: '{text}'")
+    print(f"Test text: '{text}'")
+    
+    try:
+        token_ids = tokenizer.encode(text)
+        print(f"Token IDs: {token_ids}")
         
-        if text:
-            try:
-                token_ids = tokenizer.encode(text)
-                print(f"Token IDs: {token_ids}")
-                
-                decoded = tokenizer.decode(token_ids)
-                print(f"解码结果: '{decoded}'")
-                print(f"Decoding result: '{decoded}'")
-                
-                print(f"Token数量: {len(token_ids)}")
-                print(f"Token count: {len(token_ids)}")
-            except Exception as e:
-                print(f"错误: {e}")
-                print(f"Error: {e}")
+        decoded = tokenizer.decode(token_ids)
+        print(f"解码结果: '{decoded}'")
+        print(f"Decoding result: '{decoded}'")
+        
+        print(f"Token数量: {len(token_ids)}")
+        print(f"Token count: {len(token_ids)}")
+        
+        # 验证编码解码一致性 / Verify encoding-decoding consistency
+        if text == decoded:
+            print("\n✅ 编码解码一致性检查通过！")
+            print("✅ Encoding-decoding consistency check passed!")
+        else:
+            print("\n❌ 编码解码一致性检查失败！")
+            print("❌ Encoding-decoding consistency check failed!")
+    except Exception as e:
+        print(f"错误: {e}")
+        print(f"Error: {e}")
 
 
 def analyze_corpus(args):
@@ -338,9 +350,6 @@ def main():
     
     # 设置日志 / Set up logging
     setup_logging(args.log_level)
-    
-    # 打印系统信息 / Print system information
-    print_system_info()
     
     # 执行相应命令 / Execute corresponding command
     if args.command == 'demo-unicode':
